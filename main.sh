@@ -2,3 +2,5 @@
 echo "6th line"
 
 echo "added 7th line to main.sh"
+
+echo "adding 9th line to main.sh from my_branch_1"

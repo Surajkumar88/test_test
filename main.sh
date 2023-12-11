@@ -3,4 +3,6 @@ echo "6th line"
 
 echo "added 7th line to main.sh"
 
+echo "added 11th line to main from master branch"
+
 echo "adding 9th line to main.sh from my_branch_1"

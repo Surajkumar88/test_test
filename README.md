@@ -11,3 +11,5 @@ this is a 5th line added to check diff.
 going to create a new branch right now.
 
 adding 8th line to README from my_branch_1.
+
+adding 10th line to the README from master branch 

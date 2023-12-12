@@ -8,3 +8,5 @@ echo "added 11th line to main from master branch"
 echo "adding 9th line to main.sh from my_branch_1"
 
 echo "making some random changes to the main.sh to test pull function."
+
+echo "adding new line to test git commit message with description"

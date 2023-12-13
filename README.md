@@ -9,3 +9,5 @@ this is another line added from laptopm which is 4th line.
 this is a 5th line added to check diff.
 
 adding this line from commit 3c6161a4 by going back to it.
+
+adding another linde form commit 3c6161a4 to test the sqaush merge feature.

@@ -1,0 +1,8 @@
+name: MAKEFILE test
+
+on: push
+
+jobs:
+  runs-on: macos-latest
+  steps:  
+    - run: echo "hello world"

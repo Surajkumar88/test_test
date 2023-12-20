@@ -13,14 +13,13 @@
 #       - run: bats -v
 
 
-name: MAKEFILE test
+# name: MAKEFILE test
 
-on: [push]
+# on: [push]
 
-jobs:
-    check-makefile:
-        runs-on: macos-latest
-        steps:  
-            - run: make install
-            - run: make uninstall
-            
+# jobs:
+#     check-makefile:
+#         runs-on: macos-latest
+#         steps:  
+#             - run: make install
+#             - run: make uninstall

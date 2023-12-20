@@ -21,4 +21,6 @@ jobs:
     check-makefile:
         runs-on: macos-latest
         steps:  
-            - run: echo "hello world"
+            - run: make install
+            - run: make uninstall
+            

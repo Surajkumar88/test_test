@@ -28,8 +28,5 @@ jobs:
               run: make
             - name: Installing app
               run: make install
-            - name: Compiling Make
-              run: Uninstalling app
-
-            
-            
+            - name: Uninstalling app
+              run: make uninstall

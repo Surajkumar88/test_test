@@ -20,9 +20,16 @@ on: [push]
 jobs:
     check-makefile:
         runs-on: macos-latest
-        steps:  
-            - run: brew install make
-            - run: make
-            - run: make install
-            - run: make uninstall
+        steps:
+            - uses: actions/checkout@v3
+            - name: To install make
+              run: brew install make
+            - name: Compiling Make
+              run: make
+            - name: Installing app
+              run: make install
+            - name: Compiling Make
+              run: Uninstalling app
+
+            
             

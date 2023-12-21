@@ -22,6 +22,7 @@ jobs:
         runs-on: macos-latest
         steps:  
             - run: brew install make
+            - run: make
             - run: make install
             - run: make uninstall
             

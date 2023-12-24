@@ -6,7 +6,7 @@
 
 <a href="https://tiswww.case.edu/php/chet/bash/bashtop.html"><img src="https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash"></a>
 
-<a href="https://repology.org/metapackage/oneliner-el"><img src="https://repology.org/badge/tiny-repos/oneliner-el.svg" alt="Packaging status"></a>
+<a href="https://repology.org/metapackage/PyPI"><img src="https://repology.org/badge/tiny-repos/PyPI.svg" alt="Packaging status"></a>
 
 this is testing repo
 this is the 2nd line added from laptop.

@@ -4,7 +4,7 @@
 
 ![Bash](https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash)
 
-<a href="./LICENSE"><img src="https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash"></a>
+<a href="https://tiswww.case.edu/php/chet/bash/bashtop.html"><img src="https://img.shields.io/badge/Bash-v4.4%5E-green?logo=GNU%20bash"></a>
 
 this is testing repo
 this is the 2nd line added from laptop.

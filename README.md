@@ -1,4 +1,7 @@
 # test_test
+
+<a href="LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+
 this is testing repo
 this is the 2nd line added from laptop.
 

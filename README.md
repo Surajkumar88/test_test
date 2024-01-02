@@ -29,7 +29,8 @@ adding 10th line to the README from master branch
 
 making random changes to the README file to test the pull request function.
 
-adding this line to test if I can post a commit subject and decription from the commad line itself without invoking the VIM editor.
+adding this line to test if I can post a commit subjec
+t and decription from the commad line itself without invoking the VIM editor.
 
 Line added to test multi paragraph description from command line using multiple "-m"s.
 
@@ -66,3 +67,4 @@ line addd oionvowvowe
 
 liner adubviubrv 
 hheoihf oiuhfi wuhf
+added line htis has been 

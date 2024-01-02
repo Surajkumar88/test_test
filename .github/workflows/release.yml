@@ -26,6 +26,8 @@ jobs:
           - name: show commits
             shell: bash
             run: echo $test
+            env:
+              test: Hello
     release:
         name: Create release
         runs-on: ubuntu-latest

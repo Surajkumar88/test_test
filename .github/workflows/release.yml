@@ -15,24 +15,30 @@ jobs:
           - name: Checkout code
             uses: actions/checkout@v3
 
-          # - name: Create Github release
-          #   id: create_release
-          #   uses: actions/create-release@v1
-          #   env:
-          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #   with:
-          #     tag_name: ${{ github.ref }}
-          #     release_name: Release ${{ github.ref }}
-          #     body: |
-          #       Changes in this release
-          #       - First change
-          #       - Second change
-          #       - Third changes
-          #     draft: false
-          #     prerelease: false
+          - name: Create Github release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              tag_name: ${{ github.ref }}
+              release_name: Release ${{ github.ref }}
+              body: |
+                Changes in this release
+                - First change
+                - Second change
+                - Third changes
+              draft: false
+              prerelease: false
+          - name: Getting latest release
+            id: get_latest_release
+            uses: actions/github-script@v7
+            with:
+              script: |
+                await github.request('GET /repos/${{ github.repository }}/releases/latest')
           - name: Run API call to get changelog
             uses: actions/github-script@v7
             with: 
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
-                await github.request("POST /repos/${{ github.repository }}/releases", { tag_name: '${{ github.ref }}', name: 'Test'+${{ github.ref }},generate_release_notes: true, draft: false, prerelease: false });
+                await github.request("POST /repos/${{ github.repository }}/releases/generate-notes", { tag_name: '${{ steps.get_latest_release.outcome.tag_name }}' });

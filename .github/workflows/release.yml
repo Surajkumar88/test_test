@@ -15,32 +15,31 @@ jobs:
           - name: Checkout code
             uses: actions/checkout@v3
 
-          - name: Create Github release
-            id: create_release
-            uses: actions/create-release@v1
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              tag_name: ${{ github.ref }}
-              release_name: Release ${{ github.ref }}
-              body: |
-                Changes in this release
-                - First change
-                - Second change
-                - Third changes
-              draft: false
-              prerelease: false
-          - name: Getting latest release
-            id: get_latest_release
-            uses: actions/github-script@v7
-            with:
-              script: |
-                await github.request('GET /repos/${{ github.repository }}/releases/latest')
+          # - name: Create Github release
+          #   id: create_release
+          #   uses: actions/create-release@v1
+          #   env:
+          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #   with:
+          #     tag_name: ${{ github.ref }}
+          #     release_name: Release ${{ github.ref }}
+          #     body: |
+          #       Changes in this release
+          #       - First change
+          #       - Second change
+          #       - Third changes
+          #     draft: false
+          #     prerelease: false
+
           - name: Run API call to get changelog
             uses: actions/github-script@v7
             with: 
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
-                await github.request("POST /repos/${{ github.repository }}/releases/generate-notes", { tag_name: '${{ github.ref_name }}', headers: {
-                  'X-GitHub-Api-Version': '2022-11-28'
-                } });
+                await github.request("POST /repos/${{ github.repository }}/releases", { 
+                  tag_name: '${{ github.ref_name }}',
+                  name: 'Test '+'${{ github.ref_name}}',
+                  draft: false,
+                  prerelease: false,
+                  generate_release_notes: true
+                });

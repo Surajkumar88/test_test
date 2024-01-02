@@ -24,8 +24,6 @@ jobs:
           - name: show commits
             shell: bash
             run: echo $test
-            env:
-              test: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s"
     release:
         name: Create release
         runs-on: ubuntu-latest

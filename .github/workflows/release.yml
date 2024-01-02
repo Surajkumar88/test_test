@@ -27,12 +27,7 @@ jobs:
             with:
               tag_name: ${{ github.ref }}
               release_name: Release ${{ github.ref }}
-              body: |
-                Changes in this release
-                - First change
-                - Second change
-                - Third changes
-                ${{ steps.create_changelog.outputs.changelog }}
+              body: ${{ steps.create_changelog.outputs.changelog }}
               draft: false
               prerelease: false
 

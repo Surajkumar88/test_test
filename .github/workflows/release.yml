@@ -7,6 +7,22 @@ on:
         #   - 'v*'
 
 jobs:
+    commits_list:
+        name: Get the commits since last release
+        runs-on: ubuntu-latest
+        permissions: 
+          contents: write
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+          - name: which branch
+            run: git checkout main
+          - name: Get commits
+            run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" >> "$test"
+          - name: show commits
+            run: echo $test
     release:
         name: Create release
         runs-on: ubuntu-latest
@@ -18,6 +34,22 @@ jobs:
             with:
               fetch-depth: 0
 
+            
+          # - name: Run API call to get changelog
+          #   uses: actions/github-script@v7
+          #   with: 
+          #     github-token: ${{ secrets.GITHUB_TOKEN }}
+          #     script: |
+          #       await github.request("POST /repos/${{ github.repository }}/releases", { 
+          #         tag_name: '${{ github.ref_name }}',
+          #         name: 'Test '+'${{ github.ref_name}}',
+          #         draft: false,
+          #         prerelease: false,
+          #         generate_release_notes: true,
+          #       });
+
+
+### OLD CODES ARCHIVE
           # - name: Create Github release
           #   id: create_release
           #   uses: actions/create-release@v1
@@ -34,22 +66,6 @@ jobs:
           #     draft: false
           #     prerelease: false
 
-          # - name: Run API call to get changelog
-          #   uses: actions/github-script@v7
-          #   with: 
-          #     github-token: ${{ secrets.GITHUB_TOKEN }}
-          #     script: |
-          #       await github.request("POST /repos/${{ github.repository }}/releases", { 
-          #         tag_name: '${{ github.ref_name }}',
-          #         name: 'Test '+'${{ github.ref_name}}',
-          #         draft: false,
-          #         prerelease: false,
-          #         generate_release_notes: true,
-          #       });
-          - name: which branch
-            run: git checkout main
-          - name: Get commits
-            run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" 
             # uses: actions/github-script@v7
             # with:
             #   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -57,5 +73,3 @@ jobs:
             #     await github.request("GET /repos/${{ github.repository }}/commits", {
             #       since: "2024-01-02T21:16:00Z"
             #     });
-
-

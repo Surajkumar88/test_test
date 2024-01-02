@@ -2,14 +2,18 @@ name: Create Release
 
 on:
     push:
-        tags:
-          - 'v*'
+        branches:
+            - 'main'
+            - 'master'
+        # tags:
+        #     - 'v*'
 
 jobs:
     build:
         name: Create release
         runs-on: ubuntu-latest
-        # permissions: write-all
+        permissions: 
+            contents: write
         steps:
           - name: Checkout code
             uses: actions/checkout@v3
@@ -19,8 +23,8 @@ jobs:
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-              tag_name: ${{ github.ref }}
-              release_name: Release ${{ github.ref }}
+              tag_name: ${{ github.run_number }}
+              release_name: Release ${{ github.run_number }}
               body: |
                 Changes in this release
                 - First change

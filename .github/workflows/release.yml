@@ -50,7 +50,7 @@ jobs:
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
                 await github.request("GET /repos/${{ github.repository }}/commits", {
-                  since: 2024-01-02T21:16:00.000Z
+                  since: "2024-01-02T21:16:00.000Z"
                 });
 
 

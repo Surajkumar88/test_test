@@ -41,4 +41,4 @@ jobs:
             with: 
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
-                await github.request("POST /repos/${{ github.repository }}/releases/generate-notes", { tag_name: '${{ steps.get_latest_release.outcome.tag_name }}' });
+                await github.request("POST /repos/${{ github.repository }}/releases/generate-notes", { tag_name: '${{ github.ref_name }}' });

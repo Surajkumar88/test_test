@@ -20,9 +20,9 @@ jobs:
           - name: which branch
             run: git checkout main
           - name: Get commits
-            run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" >> "$test"
+            run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" >> "$GITHUB_OUTPUT"
           - name: show commits
-            run: echo $test
+            run: echo $GITHUB_OUTPUT
     release:
         name: Create release
         runs-on: ubuntu-latest

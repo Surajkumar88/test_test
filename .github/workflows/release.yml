@@ -23,6 +23,7 @@ jobs:
                 Changes in this release
                 - First change
                 - Second change
+                - Third change
               draft: false
               prerelease: false
 

@@ -20,7 +20,8 @@ jobs:
           - name: Get commits
             shell: bash
             # run: test=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")
-            run: echo "test=$(uname)"
+            run: |
+              test=$(uname)
           - name: show commits
             shell: bash
             run: echo $test

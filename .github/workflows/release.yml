@@ -6,7 +6,7 @@ on:
           - 'v*'
 
 jobs:
-    build:
+    release:
         name: Create release
         runs-on: ubuntu-latest
         permissions: 
@@ -29,3 +29,13 @@ jobs:
                 - Third changes
               draft: false
               prerelease: false
+          - name: Upload Release Asset
+            id: upload_release_asset
+            uses: actions/upload-release-asset@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ./oneliner.zip
+                asset_name: oneliner.zip
+                asset_content_type: application/zip

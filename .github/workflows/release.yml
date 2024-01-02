@@ -38,7 +38,6 @@ jobs:
           - name: Run API call to get changelog
             uses: actions/github-script@v7
             with: 
-              github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
                 await github.request("POST /repos/${{ github.repository }}/releases, { 
                   tag_name: "${{ github.ref }}",

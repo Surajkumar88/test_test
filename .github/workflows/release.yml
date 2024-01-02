@@ -2,11 +2,8 @@ name: Create Release
 
 on:
     push:
-        branches:
-            - 'main'
-            - 'master'
-        # tags:
-        #     - 'v*'
+        tags:
+            - 'v*'
 
 jobs:
     build:
@@ -21,5 +18,12 @@ jobs:
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-              tag_name: ${{ github.run_number }}
-              release_name: Release ${{ github.run_number }}
+              tag_name: ${{ github.ref }}
+              release_name: Release ${{ github.ref }}
+              body: |
+                Changes in this release
+                - First change
+                - Second change
+                - Third change
+              draft: false
+              prerelease: false

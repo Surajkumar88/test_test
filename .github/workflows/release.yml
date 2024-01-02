@@ -6,7 +6,8 @@ on:
             - 'v*'
 
 jobs:
-    create_release:
+    build:
+        name: Create release
         runs-on: ubuntu-latest
         steps:
           - name: Checkout code

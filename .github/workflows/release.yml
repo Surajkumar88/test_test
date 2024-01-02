@@ -7,7 +7,7 @@ on:
         #   - 'v*'
 
 env:
-  VALUE1:
+  VALUE1: empty
 
 jobs:
     commits_list:

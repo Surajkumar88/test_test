@@ -43,8 +43,5 @@ jobs:
                   prerelease: false,
                   generate_release_notes: true,
                 });
-          - name: adding commits since last release
-            uses: actions/publish-actions@v0.2.2
-            with:
-              source-tag: '${{ github.ref_name }}'
+
 

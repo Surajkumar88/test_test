@@ -11,15 +11,14 @@ jobs:
         runs-on: ubuntu-latest
         permissions: 
             contents: write
-            packages: write
         steps:
           - name: Checkout code
             uses: actions/checkout@v3
-          - name: Create zip file
-            uses: thedoctor0/zip-release@0.7.5
-            with:
-                type: zip
-                filename: 'onerliner.zip'     
+          - name: Create Release changelog
+            id: create_changelog
+            uses: mikepenz/release-changelog-builder-action@v3
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
           - name: Create Github release
             id: create_release
             uses: actions/create-release@v1
@@ -33,15 +32,7 @@ jobs:
                 - First change
                 - Second change
                 - Third changes
+                ${{ steps.create_changelog.outputs.changelog }}
               draft: false
               prerelease: false
-          - name: Upload Release Asset
-            id: upload_release_asset
-            uses: actions/upload-release-asset@v1
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-                upload_url: ${{ steps.create_release.outputs.upload_url }}
-                asset_path: ./oneliner.zip
-                asset_name: oneliner-v{{ github.ref }}.zip
-                asset_content_type: application/zip
+

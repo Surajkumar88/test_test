@@ -20,8 +20,10 @@ jobs:
           - name: which branch
             run: git checkout main
           - name: Get commits
+            shell: bash
             run: test=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")
           - name: show commits
+            shell: bash
             run: echo $test
     release:
         name: Create release

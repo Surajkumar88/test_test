@@ -44,6 +44,8 @@ jobs:
           #         prerelease: false,
           #         generate_release_notes: true,
           #       });
+          - name: which branch
+            run: git checkout main
           - name: Get commits
             run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" 
             # uses: actions/github-script@v7

@@ -2,8 +2,11 @@ name: Create Release
 
 on:
     push:
-        tags:
-            - 'v*'
+        branches:
+            - 'main'
+            - 'master'
+        # tags:
+        #     - 'v*'
 
 jobs:
     build:

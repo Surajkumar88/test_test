@@ -45,12 +45,13 @@ jobs:
           #         generate_release_notes: true,
           #       });
           - name: Get commits
-            uses: actions/github-script@v7
-            with:
-              github-token: ${{ secrets.GITHUB_TOKEN }}
-              script: |
-                await github.request("GET /repos/${{ github.repository }}/commits", {
-                  since: "2024-01-02T21:16:00Z"
-                });
+            run: git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" 
+            # uses: actions/github-script@v7
+            # with:
+            #   github-token: ${{ secrets.GITHUB_TOKEN }}
+            #   script: |
+            #     await github.request("GET /repos/${{ github.repository }}/commits", {
+            #       since: "2024-01-02T21:16:00Z"
+            #     });
 
 

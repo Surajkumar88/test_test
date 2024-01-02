@@ -6,6 +6,9 @@ on:
         # tags:
         #   - 'v*'
 
+env:
+  VALUE1:
+
 jobs:
     commits_list:
         name: Get the commits since last release
@@ -20,10 +23,10 @@ jobs:
           - name: Get commits
             shell: bash
             # run: test=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")
-            run: echo "test=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")"
+            run: echo "VALUE1=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")" >> $GITHUB_ENV
           - name: show commits
             shell: bash
-            run: echo $test
+            run: echo ${{env.VALUE1}}
     release:
         name: Create release
         runs-on: ubuntu-latest

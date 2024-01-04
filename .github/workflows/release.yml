@@ -2,9 +2,8 @@ name: Create Release
 
 on:
     push:
-        branches: main
-        # tags:
-        #   - 'v*'
+        tags:
+          - 'v*'
 
 # env:
 #   VALUE1: empty

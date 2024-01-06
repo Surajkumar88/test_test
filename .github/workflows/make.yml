@@ -42,3 +42,5 @@ jobs:
             run: ls
           - name: coreutils version
             run: ls --version 2> /dev/null || gls --version 2> /dev/null
+          - name: Setup tmate session
+            uses: mxschmitt/action-tmate@v3

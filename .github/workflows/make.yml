@@ -36,8 +36,8 @@ jobs:
               if [[ matrix.os == "macos-latest" ]]; then
                 brew install coreutils 
               fi
-          - name: Compiling Make
-            run: make
+          # - name: Compiling Make
+          #   run: make
           - name: Installing app
             run: make install
           - name: Uninstalling app

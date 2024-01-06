@@ -60,9 +60,9 @@ jobs:
       - name: install coreutils
         run: brew install coreutils
       - name: check coreutils version
-        run: ls --version
+        run: gls --version
       - name: make app
-        run: sudo make install
+        run: make install
       - name: make uninstall
         run: make uninstall
 
@@ -71,8 +71,10 @@ jobs:
     steps:
       - name: check coreutils version
         run: ls --version
+      - name: check ls
+        run: ls
       - name: make app
         run: sudo make install
       - name: make uninstall
-        run: make uninstall
+        run: sudo make uninstall
 

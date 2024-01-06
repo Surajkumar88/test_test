@@ -64,8 +64,8 @@ jobs:
         run: gls --version
       - name: installing make
         run: brew install make
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: make app
         run: make install
       - name: make uninstall
@@ -81,8 +81,8 @@ jobs:
         run: ls
       - name: installing make
         run: sudo apt-get install -y make
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: make app
         run: sudo make install
       - name: make uninstall

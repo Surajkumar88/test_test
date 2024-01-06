@@ -36,11 +36,12 @@ jobs:
           #   run: make uninstall
           - name: bash version
             run: echo $BASH_VERSION
+          - name: Setup tmate session
+            uses: mxschmitt/action-tmate@v3
           - name: bash verinfo
             run: echo $BASH_VERINFO
           - name: see ls
             run: ls
           - name: coreutils version
             run: ls --version 2> /dev/null || gls --version 2> /dev/null
-          - name: Setup tmate session
-            uses: mxschmitt/action-tmate@v3
+

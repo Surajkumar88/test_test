@@ -26,8 +26,11 @@ jobs:
       runs-on: ${{ matrix.os }}
       steps:
           - uses: actions/checkout@v3
-          - name: To install make
-            run: brew install make
+          - name: To install make on macos
+            run: |
+              if [[ matrix.os == "macos-latest" ]]; then
+                brew install make
+              fi
           - name: coreutils version
             run: |
               if [[ matrix.os == "macos-latest"]]; then
@@ -42,8 +45,8 @@ jobs:
 
           - name: bash version
             run: echo $BASH_VERSION
-          - name: Setup tmate session
-            uses: mxschmitt/action-tmate@v3
+          # - name: Setup tmate session
+          #   uses: mxschmitt/action-tmate@v3
           - name: bash verinfo
             run: echo $BASH_VERINFO
           - name: see ls

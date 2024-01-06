@@ -1,6 +1,4 @@
 
-PATH = /usr/local/bin
-
 distro = $(shell uname)
 # Setting the DESTDIR path based on the Distro detected
 ifeq ($(distro), Linux)

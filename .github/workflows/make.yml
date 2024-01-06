@@ -39,4 +39,4 @@ jobs:
           - name: bash verinfo
             run: echo $BASH_VERINFO
           - name: coreutils version
-            run: ls --version
+            run: ls --version 2> /dev/null | gls --version

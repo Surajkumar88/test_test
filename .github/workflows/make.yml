@@ -44,4 +44,6 @@ jobs:
             run: ls
           - name: coreutils version
             run: ls --version 2> /dev/null || gls --version 2> /dev/null
+          - name: info core
+            run: info coreutils 
 

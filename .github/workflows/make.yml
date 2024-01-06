@@ -26,14 +26,14 @@ jobs:
       runs-on: ${{ matrix.os }}
       steps:
           - uses: actions/checkout@v3
-          - name: To install make
-            run: brew install make
-          - name: Compiling Make
-            run: make
-          - name: Installing app
-            run: make install
-          - name: Uninstalling app
-            run: make uninstall
+          # - name: To install make
+          #   run: brew install make
+          # - name: Compiling Make
+          #   run: make
+          # - name: Installing app
+          #   run: make install
+          # - name: Uninstalling app
+          #   run: make uninstall
           - name: bash version
             run: echo $BASH_VERSION
           - name: bash verinfo

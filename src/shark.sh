@@ -11,4 +11,4 @@ note="This script is not to be ran separately. Only to be used by BATS"
 for words in ${note[*]}; do
     printf "%s   " "$words"
     sleep 0.2
-don
+done

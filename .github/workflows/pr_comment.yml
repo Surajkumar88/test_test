@@ -16,12 +16,12 @@ jobs:
             run: |
               gh api -X POST \
               http://api.github.com/repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments \
-              -f body="Comment form pr_comment workflow"
+              -f body='Comment form pr_comment workflow'
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               OWNER: ${{ github.event.repository.owner }}
               REPOSITORY: ${{ github.event.repository.name }}
-              ISSUE_NUMBER: ${{ github.event.issue.number }}
+              ISSUE_NUMBER: ${{ github.event.number }}
 
 
                 # await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {

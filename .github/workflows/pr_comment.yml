@@ -12,18 +12,24 @@ jobs:
         permissions:
             contents: write
         steps:
-            - name: add comment to PR
-              uses: actions/github-script@v7
-              if: always()
-              with: 
-                github-token: ${{ secrets.GITHUB_TOKEN }}
-                script: |
-                  await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {
-                    owner: context.repo.owner,
-                    repo: context.repo,
-                    issue_number: context.issue_number,
-                    body: 'Hello from action workflow'
-                  })
+          - name: add comment to PR
+            run: |
+              gh api -X POST \
+              http://api.github.com/repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments \
+              -f body="Comment form pr_comment workflow"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              OWNER: ${{ github.event.repository.owner }}
+              REPOSITORY: ${{ github.event.repository.name }}
+              ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+
+                # await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {
+                #   owner: context.repo.owner,
+                #   repo: context.repo,
+                #   issue_number: context.issue_number,
+                #   body: 'Hello from action workflow'
+                # })
 
 
                 # await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {

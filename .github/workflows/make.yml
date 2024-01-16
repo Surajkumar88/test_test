@@ -1,0 +1,90 @@
+# name: learn-github-actions
+# run-name: ${{ github.actor }} is learning GitHub Actions
+# on: [push]
+# jobs:
+#   check-bats-version:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: '14'
+#       - run: npm install -g bats
+#       - run: bats -v
+
+
+name: MAKEFILE test
+
+on: [push]
+
+# jobs:
+#     check-makefile:
+#       strategy:
+#         matrix:
+#           os: [macos-latest, ubuntu-latest]
+#           # bash: [3.2, 4.2, 5.0, 5.2]
+#       runs-on: ${{ matrix.os }}
+#       steps:
+#           - uses: actions/checkout@v3
+#           - name: To install make on macos
+#             run: |
+#               if [[ matrix.os == "macos-latest" ]]; then
+#                 brew install make
+#               fi
+#           - name: coreutils version
+#             run: |
+#               if [[ matrix.os == "macos-latest" ]]; then
+#                 brew install coreutils 
+#               fi
+#           # - name: Compiling Make
+#           #   run: make
+#           - name: Installing app
+#             run: make install
+#           - name: Uninstalling app
+#             run: make uninstall
+
+#           - name: bash version
+#             run: echo $BASH_VERSION
+#           # - name: Setup tmate session
+#           #   uses: mxschmitt/action-tmate@v3
+#           - name: bash verinfo
+#             run: echo $BASH_VERINFO
+#           - name: see ls
+#             run: ls
+
+
+jobs:
+  make_app_macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install coreutils
+        run: brew install coreutils
+      - name: check coreutils version
+        run: gls --version
+      - name: installing make
+        run: brew install make
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      - name: make app
+        run: make install
+      - name: make uninstall
+        run: make uninstall
+
+  make_app_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: check coreutils version
+        run: ls --version
+      - name: check ls
+        run: ls
+      - name: installing make
+        run: sudo apt-get install -y make
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      - name: make app
+        run: sudo make install
+      - name: make uninstall
+        run: sudo make uninstall
+

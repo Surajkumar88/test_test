@@ -1,0 +1,78 @@
+name: Create Release
+
+on:
+    push:
+        tags:
+          - 'v*'
+
+# env:
+#   VALUE1: empty
+
+jobs:
+    # commits_list:
+    #     name: Get the commits since last release
+    #     runs-on: ubuntu-latest
+    #     permissions: 
+    #       contents: write
+    #     steps:
+    #       - name: Checkout code
+    #         uses: actions/checkout@v3
+    #         with:
+    #           fetch-depth: 0
+    #       - name: Get commits
+    #         shell: bash
+    #         # run: test=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")
+    #         run: echo "VALUE1=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")" >> $GITHUB_ENV
+    #       - name: show commits
+    #         shell: bash
+    #         run: echo ${{ env.VALUE1 }}
+    release:
+        name: Create release
+        runs-on: ubuntu-latest
+        permissions: 
+            contents: write
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+
+            
+          - name: Run API call to get changelog
+            uses: actions/github-script@v7
+            with: 
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+              script: |
+                await github.request("POST /repos/${{ github.repository }}/releases", { 
+                  tag_name: '${{ github.ref_name }}',
+                  name: 'Test '+'${{ github.ref_name}}',
+                  draft: false,
+                  prerelease: false,
+                  generate_release_notes: true,
+                });
+
+
+### OLD CODES ARCHIVE
+          # - name: Create Github release
+          #   id: create_release
+          #   uses: actions/create-release@v1
+          #   env:
+          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #   with:
+          #     tag_name: ${{ github.ref }}
+          #     release_name: Release ${{ github.ref }}
+          #     body: |
+          #       Changes in this release
+          #       - First change
+          #       - Second change
+          #       - Third changes
+          #     draft: false
+          #     prerelease: false
+
+            # uses: actions/github-script@v7
+            # with:
+            #   github-token: ${{ secrets.GITHUB_TOKEN }}
+            #   script: |
+            #     await github.request("GET /repos/${{ github.repository }}/commits", {
+            #       since: "2024-01-02T21:16:00Z"
+            #     });

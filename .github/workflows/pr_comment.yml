@@ -19,9 +19,9 @@ jobs:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
                   await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {
-                    owner: 'OWNER',
-                    repo: 'REPO'
-                    issue_number: 'ISSUE_NUMBER'
+                    owner: context.repo.owner,
+                    repo: context.repo,
+                    issue_number: context.issue_number,
                     body: 'Hello from action workflow'
                   })
 

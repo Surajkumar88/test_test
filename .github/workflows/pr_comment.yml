@@ -21,7 +21,7 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               OWNER: ${{ github.event.repository.owner }}
               REPOSITORY: ${{ github.event.repository.name }}
-              ISSUE_NUMBER: ${{ github.event.number }}
+              ISSUE_NUMBER: ${{ github.event.pull_request.number }}
 
 
                 # await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {

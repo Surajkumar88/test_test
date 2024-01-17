@@ -19,10 +19,7 @@ jobs:
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
                 await github.request("POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
-                  body: 'Comment from pr_comment workflow',
-                  headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                  }
+                  body: 'this comment will be posted to PR if a run is critical test is failed.',
                 });
 
 

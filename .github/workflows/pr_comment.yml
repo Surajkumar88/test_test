@@ -20,7 +20,7 @@ jobs:
               script: |
                 const wf_name = '${{ github.workflow }}'
                 await github.request("POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
-                  body: '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}',
+                  body: '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.workflow.runs.pull_request.id }}',
                 });
 
 

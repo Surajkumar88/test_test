@@ -20,7 +20,7 @@ jobs:
               script: |
                 const wf_name = '${{ github.workflow }}'
                 await github.request("POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
-                  body: 'this comment will be posted to PR if a run is critical test is failed ${{ github.workflow }}.',
+                  body: '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}',
                 });
 
 

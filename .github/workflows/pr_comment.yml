@@ -10,7 +10,7 @@ jobs:
         name: Create Commnent on PR
         runs-on: ubuntu-latest
         permissions:
-          issues: write
+          pull-requests: write
           contents: write
         steps:
           - name: create comment on PR with API

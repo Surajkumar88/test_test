@@ -18,7 +18,10 @@ jobs:
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
                 await github.request("POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
-                  body: 'Comment form pr_comment workflow'
+                  body: 'Comment form pr_comment workflow',
+                  headers: {
+                    'X-GitHub-Api-Version': '2022-11-28'
+                  }
                 });
 
 

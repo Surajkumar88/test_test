@@ -17,7 +17,7 @@ jobs:
             with:
               github-token: ${{ secrets.GITHUB_TOKEN }}
               script: |
-                await github.request("POST /repos/${{ github.repository_owner }}/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
+                await github.request("POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
                   body: 'Comment form pr_comment workflow'
                 });
 

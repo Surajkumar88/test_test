@@ -12,11 +12,22 @@ jobs:
         permissions:
             contents: write
         steps:
-          - name: add comment to PR
-            run: |
-              gh api /repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments -f body='Comment form pr_comment workflow'
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              OWNER: ${{ github.repository_owner }}
-              REPOSITORY: ${{ github.event.repository.name }}
-              ISSUE_NUMBER: ${{ github.event.number }}
+          - name: create comment on PR with API
+            uses: actions/github-script@v7
+            with:
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+              script: |
+                await github.request("POST /repos/${{ github.repository_owner }}/${{ github.repository }}/issues/${{ github.event.number }}/comments", {
+                  body: 'Comment form pr_comment workflow'
+                });
+
+
+
+          # - name: add comment to PR
+          #   run: |
+          #     gh api /repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments -f body='Comment form pr_comment workflow'
+          #   env:
+          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #     OWNER: ${{ github.repository_owner }}
+          #     REPOSITORY: ${{ github.event.repository.name }}
+          #     ISSUE_NUMBER: ${{ github.event.number }}

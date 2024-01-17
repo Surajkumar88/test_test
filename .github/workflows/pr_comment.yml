@@ -14,9 +14,7 @@ jobs:
         steps:
           - name: add comment to PR
             run: |
-              gh api --method POST \
-              /repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments \
-              -f body='Comment form pr_comment workflow'
+              gh api /repos/${OWNER}/${REPO}/issues/${ISSUE_NUMBER}/comments -f body='Comment form pr_comment workflow'
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               OWNER: ${{ github.repository_owner }}

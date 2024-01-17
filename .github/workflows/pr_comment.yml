@@ -19,35 +19,6 @@ jobs:
               -f body='Comment form pr_comment workflow'
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              OWNER: ${{ github.event.repository.owner }}
+              OWNER: ${{ github.repository_owner }}
               REPOSITORY: ${{ github.event.repository.name }}
               ISSUE_NUMBER: ${{ github.event.pull_request.number }}
-
-
-                # await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments, {
-                #   owner: context.repo.owner,
-                #   repo: context.repo,
-                #   issue_number: context.issue_number,
-                #   body: 'Hello from action workflow'
-                # })
-
-
-                # await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-                #   owner: 'OWNER',
-                #   repo: 'REPO',
-                #   issue_number: 'ISSUE_NUMBER',
-                #   body: 'Me too',
-                #   headers: {
-                #     'X-GitHub-Api-Version': '2022-11-28'
-                #   }
-                # })
-                # github-token: ${{ secrets.GITHUB_TOKEN }}
-                # script: | 
-                #   await github.request("POST /repos/${{ github.repository }}/releases", {
-                #     tag_name: '${{ github.ref_name }}',
-                #     name: 'Test '+'${{ github.ref_name }}',
-                #     prerelease: false,
-                #     draft: false,
-                #     generate_release_notes: true,
-                #     make_latest: 'true',
-                #   });
